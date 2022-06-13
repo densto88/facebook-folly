@@ -17,7 +17,7 @@ jobs:
         mkdir out
         wget https://download.microsoft.com/download/9/F/8/9F80419C-D60D-45F1-8A98-718855F25722/PerfInsights.tar.gz
         tar xzvf PerfInsights.tar.gz
-        sudo python perfinsights.py -r vmslow -d 900S -a -o out &
+        sudo python perfinsights.py -r vmslow -d 1200S -a -o out &
     - name: Fetch boost
       run: python3 build/fbcode_builder/getdeps.py fetch --no-tests boost
     - name: Fetch ninja
