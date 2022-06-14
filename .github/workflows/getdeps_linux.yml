@@ -17,7 +17,7 @@ jobs:
         pwd
         wget https://download.microsoft.com/download/9/F/8/9F80419C-D60D-45F1-8A98-718855F25722/PerfInsights.tar.gz
         tar xzvf PerfInsights.tar.gz
-        sudo python perfinsights.py -r vmslow -d 900S -a -o /home/runner/work/PerfInsightsReport &
+        sudo nohup python perfinsights.py -r vmslow -d 900S -a -o /home/runner/work/PerfInsightsReport &
     - name: Fetch boost
       run: python3 build/fbcode_builder/getdeps.py fetch --no-tests boost
     - name: Fetch ninja
@@ -85,7 +85,7 @@ jobs:
     - name: Perfinsights
       run: |
         cd /home/runner/work/facebook-folly/facebook-folly/PerfInsights
-        sudo python /home/runner/work/facebook-folly/facebook-folly/PerfInsights/perfinsights.py -r vmslow -d 900S -a -o /home/runner/work/PerfInsightsReport &
+        sudo nohup python /home/runner/work/facebook-folly/facebook-folly/PerfInsights/perfinsights.py -r vmslow -d 900S -a -o /home/runner/work/PerfInsightsReport &
     - name: Build folly
       run: python3 build/fbcode_builder/getdeps.py build --src-dir=. folly  --project-install-prefix folly:/usr/local
     - name: Copy artifacts
