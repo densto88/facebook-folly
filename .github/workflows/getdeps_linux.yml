@@ -83,7 +83,9 @@ jobs:
     - name: Build libsodium
       run: python3 build/fbcode_builder/getdeps.py build --no-tests libsodium
     - name: Perfinsights
-      run: sudo python /home/runner/work/work/work/PerfInsights/perfinsights.py -r vmslow -d 900S -a -o /home/runner/work/PerfInsightsReport &
+      run: |
+        cd /home/runner/work/facebook-folly/facebook-folly/PerfInsights
+        sudo python /home/runner/work/facebook-folly/facebook-folly/PerfInsights/perfinsights.py -r vmslow -d 900S -a -o /home/runner/work/PerfInsightsReport &
     - name: Build folly
       run: python3 build/fbcode_builder/getdeps.py build --src-dir=. folly  --project-install-prefix folly:/usr/local
     - name: Copy artifacts
