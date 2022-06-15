@@ -20,6 +20,11 @@ jobs:
         sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 9
         sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 9
         gcc --version
+        sudo sysctl -a
+        sudo sysctl -w vm.swappiness=0
+        sudo sysctl -w vm.dirty_ratio=80
+        sudo sysctl -w vm.dirty_background_ratio=5  
+        sudo sysctl -w vm.dirty_expire_centisecs=12000
     - name: Perfinsights
       run: |
         ls
