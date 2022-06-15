@@ -9,6 +9,17 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v2
+    - name: Update GNU
+      run: |
+        gcc --version
+        which gcc
+        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 7
+        sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 7
+        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 8
+        sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 8
+        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 9
+        sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 9
+        gcc --version
     - name: Perfinsights
       run: |
         ls
